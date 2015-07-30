@@ -45,7 +45,7 @@ def get_services():
 
         ignore, service, container = i.key[1:].split("/")
         endpoints = services.setdefault(service, dict(port="", backends=[]))
-        s,p = container.rsplit(":", 1)
+        s,p = i.value.rsplit(":", 1)
         endpoints["port"] = p
         endpoints["backends"].append(dict(name=container, addr=i.value))
     return services
